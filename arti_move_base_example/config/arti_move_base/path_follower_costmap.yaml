@@ -1,0 +1,28 @@
+path_follower_costmap:
+  plugins:
+    - {name: obstacles,         type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation,         type: "costmap_2d::InflationLayer"}
+
+  update_frequency: 10.0
+  publish_frequency: 10.0
+
+  global_frame: map
+  robot_base_frame: base_link
+
+  rolling_window: true
+  width: 10.0
+  height: 10.0
+  resolution: 0.2
+
+  # if not inside tolerance the robot will be stopped!
+  transform_tolerance: 1.0
+
+  footprint: [[0.55,   0.4],
+              [-0.55,  0.4],
+              [-0.55, -0.4],
+              [0.55,-0.4]]
+
+  inflation:
+      inflation_radius: 0.6
+      cost_scaling_factor: 1.0
+

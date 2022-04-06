@@ -1,0 +1,4 @@
+type: arti_a_start_network_planner/NetworkPlannerPlugin
+corridor_width: 1.0
+max_number_increases: 3
+increase_factor: 2.0

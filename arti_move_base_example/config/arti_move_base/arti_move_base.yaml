@@ -1,0 +1,17 @@
+#network_planner:
+
+global_planner:
+  lookahead: 100.0
+
+local_planner:
+  lookahead: 100.0
+  profiling:
+    print_statistics: false
+    print_statistics_interval: 1.0
+
+#path_follower:
+
+ackermann_steering: false
+x_y_simple_goal_final_tolerance: 0.5
+yaw_simple_goal_final_tolerance: 0.8
+

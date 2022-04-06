@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="project_tag"/>
+
+  <node name="$(anon rviz)" pkg="rviz" type="rviz" args="-d $(arg project_tag)/config/arti_igvi.rviz"/>
+</launch>

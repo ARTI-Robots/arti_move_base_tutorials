@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="project_root" default="$(env HOME)/arti"/>
+  <arg name="project_tag" default="$(find arti_move_base_example)"/>
+
+  <arg name="roadmap" default="$(arg project_root)/navigation/navgraph.yaml"/>
+  <arg name="area" default="$(arg project_root)/map"/>
+  <arg name="rviz" default="true"/>
+  <arg name="simulation" default="true"/>
+
+  <node pkg="arti_move_base_example" type="odom_republisher.py" name="base_link_publisher"/>
+
+  <include file="$(arg project_tag)/launch/ukf.launch"/>
+
+
+  <include file="$(arg project_tag)/launch/arti_move_base.launch">
+   <arg name="project_tag" value="$(arg project_tag)"/>
+    <!--arg name="roadmap" value="$(arg roadmap)"/-->
+  </include>
+
+
+  <arg name="map_reference_file" default="$(arg project_tag)/config/map_reference.yaml"/>
+  <arg name="ref"
+       value="$(eval dict(line.split(':') for line in open(arg('map_reference_file')) if line.strip() and not line.strip().startswith('#')))"/>
+
+  <include if="$(arg rviz)" file="$(arg project_tag)/launch/rviz.launch">
+    <arg name="project_tag" value="$(arg project_tag)"/>
+  </include>
+
+</launch>

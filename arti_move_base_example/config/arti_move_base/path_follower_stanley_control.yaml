@@ -1,0 +1,15 @@
+type: arti_public_stanley_control/StanleyControlPathFollower
+
+input_pose_topic: "/ukf_pose"
+target_frame: "map"
+control_gain_k: 0.1
+speed_proportional_gain_kp: 1.0
+max_steering_angle: 60
+lookahead: 1.0
+wheel_base: 0.4
+max_velocity: 1.0
+rotate_on_place: False
+min_linear_x: 0.2
+perform_linear_interpolation: False
+perform_spline_interpolation: True
+enable_reverse_driving: False
