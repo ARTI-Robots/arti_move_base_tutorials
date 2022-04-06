@@ -7,12 +7,13 @@ Arti public stanley controller ( https://github.com/ARTI-Robots/stanley_control_
 
 teb-local-planer (sudo apt-get install ros-$(rosversion -d)-teb-local-planner)
 
-
-## Install
-
 sudo apt-get install ros-$(rosversion -d)-turtlesim
+
 
 ## start
 
 roslaunch arti_move_base_example example_project_launch.launch 
 
+
+## Troubleshooting
+check that the script/odom_republisher.py is executable
