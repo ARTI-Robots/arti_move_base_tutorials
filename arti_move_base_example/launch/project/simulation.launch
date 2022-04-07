@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="turtle_sim" pkg="turtlesim" type="turtlesim_node" output="screen" clear_params="true">
+    <remap from="turtle1/cmd_vel" to="cmd_vel"/>
+  </node>
+
+  <node name="odom_republisher" pkg="arti_move_base_example" type="odom_republisher.py">
+    <remap from="turtle_pose" to="turtle1/pose"/>
+  </node>
+
+</launch>

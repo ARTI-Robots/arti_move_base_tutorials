@@ -5,25 +5,26 @@
   <arg name="project_tag" default=""/>
   <arg name="config_path" default="$(arg project_tag)/config/arti_move_base"/>
 
-  <node name="arti_move_base" pkg="arti_move_base" type="arti_move_base_node" output="screen" clear_params="true"> <!-- launch-prefix="valgrind" -->
+  <node name="arti_move_base" pkg="arti_move_base" type="arti_move_base_node" output="screen"
+        clear_params="true"> <!-- launch-prefix="valgrind" -->
     <rosparam file="$(arg config_path)/arti_move_base.yaml"/>
 
     <!-- COSTMAPS -->
 
-    <rosparam file="$(arg config_path)/global_costmap.yaml"/>
-    <rosparam file="$(arg config_path)/local_costmap.yaml"/>
-    <rosparam file="$(arg config_path)/path_follower_costmap.yaml"/>
+    <rosparam ns="global_costmap" file="$(arg config_path)/global_costmap.yaml"/>
+    <rosparam ns="local_costmap" file="$(arg config_path)/local_costmap.yaml"/>
+    <rosparam ns="path_follower_costmap" file="$(arg config_path)/path_follower_costmap.yaml"/>
 
     <!-- NETWORK PLANNER -->
 
     <rosparam ns="network_planner/planner" file="$(arg config_path)/network_planner_pass_through.yaml"/>
-    <!--rosparam ns="network_planner/planner" file="$(arg config_path)/network_planner_a_star.yaml"/-->
-    <!--rosparam ns="network_planner/planner" file="$(arg roadmap)"/-->
+    <!--<rosparam ns="network_planner/planner" file="$(arg config_path)/network_planner_a_star.yaml"/>-->
+    <!--<rosparam ns="network_planner/planner" file="$(arg roadmap)"/>-->
 
     <!-- GLOBAL PLANNER -->
 
     <rosparam ns="global_planner/planner" file="$(arg config_path)/global_planner_pass_through.yaml"/>
-    <!-- <rosparam ns="global_planner/planner" file="$(arg config_path)/global_planner.yaml"/>-->
+    <!--<rosparam ns="global_planner/planner" file="$(arg config_path)/global_planner.yaml"/>-->
 
     <!-- LOCAL PLANNER -->
 
@@ -41,10 +42,8 @@
     <remap from="~/global_costmap/obstacles/scan" to="/scan"/>
     <remap from="~/local_costmap/obstacles/scan" to="/scan"/>
     <remap from="~/path_follower_costmap/obstacles/scan" to="/scan"/>
-    <remap from="/odom" to="/odom_t1"/>
-    <!--remap from="/cmd_vel" to="/cmd_vel_in"/-->
-    <remap from="/cmd_vel" to="turtle1/cmd_vel"/>
+    <!--<remap from="/odom" to="/odom"/>-->
+    <!--<remap from="/cmd_vel" to="/cmd_vel"/>-->
   </node>
-  
-</launch>
 
+</launch>

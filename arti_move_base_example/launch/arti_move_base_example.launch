@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="project_root" default="$(env HOME)/arti"/>
+  <arg name="project_tag" default="$(find arti_move_base_example)"/>
+  <arg name="simulation" default="true"/>
+  <arg name="hardware" default="$(eval not arg('simulation'))"/>
+  <arg name="rviz" default="true"/>
+
+  <include file="$(arg project_tag)/launch/arti.launch">
+    <arg name="project_root" value="$(arg project_root)"/>
+    <arg name="project_tag" value="$(arg project_tag)"/>
+    <arg name="rviz" value="$(arg rviz)"/>
+  </include>
+
+  <include if="$(arg simulation)" file="$(arg project_tag)/launch/project/simulation.launch"/>
+
+  <include if="$(arg hardware)" file="$(arg project_tag)/launch/project/hardware.launch"/>
+
+</launch>
